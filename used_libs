@@ -1,0 +1,10 @@
+libc.so.6
+libcurl.so.4
+libdl.so.2
+libgcrypt.so.20
+libm.so.6
+libncursesw.so.6
+libperl.so
+libpthread.so.0
+libtinfow.so.6
+libz.so.1

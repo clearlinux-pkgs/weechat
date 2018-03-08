@@ -1,0 +1,52 @@
+Configure miss: ncursesw/curses.h usability
+Configure miss: ncursesw/curses.h presence
+Configure miss: ncursesw/curses.h
+Configure miss: iconv_open in -liconv
+Configure miss: libiconv_open in -liconv
+Configure miss: aspell.h usability
+Configure miss: aspell.h presence
+Configure miss: aspell.h
+Configure miss: new_aspell_speller in -laspell
+Configure miss: aspell headers and libraries
+Configure miss: ruby1.9.3
+Configure miss: ruby1.9.2
+Configure miss: ruby1.9.1
+Configure miss: ruby1.9
+Configure miss: ruby1.8
+Configure miss: lua-config
+Configure miss: lua-config52
+Configure miss: lua-config5.2
+Configure miss: lua-config51
+Configure miss: lua-config5.1
+Configure miss: lua-config50
+Configure miss: lua-config5.0
+Configure miss: lua.h usability
+Configure miss: lua.h presence
+Configure miss: lua.h
+Configure miss: lualib.h usability
+Configure miss: lualib.h presence
+Configure miss: lualib.h
+Configure miss: lua_call in -llua
+Configure miss: lua_call in -llua52
+Configure miss: lua_call in -llua5.2
+Configure miss: lua_call in -llua51
+Configure miss: lua_call in -llua5.1
+Configure miss: lua_call in -llua50
+Configure miss: lua_call in -llua5.0
+Configure miss: Lua compiling and linking
+Configure miss: v8.h usability
+Configure miss: v8.h presence
+Configure miss: v8.h
+Configure miss: PHP headers and libraries with php-config... checking for php-config7.2
+Configure miss: php-config72
+Configure miss: php-config7.1
+Configure miss: php-config71
+Configure miss: php-config7.0
+Configure miss: php-config70
+Configure miss: php-config7
+Configure miss: PHP compiling and linking
+Configure miss: gnutls/gnutls.h usability
+Configure miss: gnutls/gnutls.h presence
+Configure miss: gnutls/gnutls.h
+Configure miss: gnutls_global_init in -lgnutls
+Configure miss: gnutls headers and libraries
