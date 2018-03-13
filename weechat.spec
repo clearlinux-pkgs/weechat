@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 2.0.1
-Release  : 3
+Release  : 4
 URL      : https://weechat.org/files/src/weechat-2.0.1.tar.gz
 Source0  : https://weechat.org/files/src/weechat-2.0.1.tar.gz
 Source99 : https://weechat.org/files/src/weechat-2.0.1.tar.gz.asc
@@ -32,6 +32,7 @@ BuildRequires : python
 BuildRequires : python3-dev
 BuildRequires : ruby
 BuildRequires : zlib-dev
+Patch1: pkgconfig-curl.patch
 
 %description
 This directory contains patches that must be applied for some old Debian/Ubuntu
@@ -85,6 +86,7 @@ locales components for the weechat package.
 
 %prep
 %setup -q -n weechat-2.0.1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/

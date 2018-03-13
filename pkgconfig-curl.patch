@@ -1,0 +1,36 @@
+diff -ru weechat-2.0.1/configure.ac weechat-2.0.1~/configure.ac
+--- weechat-2.0.1/configure.ac	2017-12-20 21:03:06.000000000 +0000
++++ weechat-2.0.1~/configure.ac	2018-03-13 19:33:13.897488294 +0000
+@@ -1206,14 +1206,26 @@
+ #                                     curl
+ # ------------------------------------------------------------------------------
+ 
+-AC_PATH_PROG(CURL_CONFIG, curl-config)
+-if test "x$CURL_CONFIG" = "x" ; then
++## Select pkgconfig over curl-config to avoid indirect deps
++pkgconfig_libcurl_found=`$PKGCONFIG --exists libcurl 2>/dev/null`
++if test "x$?" = "x0" ; then
++    echo "checking libcurl version ..." \
++        `$PKGCONFIG --modversion libcurl`
++    CURL_CFLAGS=`$PKGCONFIG --cflags libcurl`
++    CURL_LFLAGS=`$PKGCONFIG --libs libcurl`
++else
++    ## curl-config might not match the installed libcurl.
++    ## so we allow the user to set CURL_CFLAGS, CURL_LFLAGS as a fallback
++    AC_PATH_PROG(CURL_CONFIG, curl-config)
++    if test "x$CURL_CONFIG" = "x" ; then
+     AC_MSG_ERROR([
+-*** "curl-config" couldn't be found on your system.
+-*** Try to install libcurl-dev with your software package manager.])
++        *** "curl-config" couldn't be found on your system.
++        *** Try to install libcurl-dev with your software package manager.])
++    fi
++    CURL_CFLAGS=`$CURL_CONFIG --cflags`
++    CURL_LFLAGS=`$CURL_CONFIG --libs`
+ fi
+-CURL_CFLAGS=`$CURL_CONFIG --cflags`
+-CURL_LFLAGS=`$CURL_CONFIG --libs`
++
+ AC_SUBST(CURL_CFLAGS)
+ AC_SUBST(CURL_LFLAGS)
+ 
