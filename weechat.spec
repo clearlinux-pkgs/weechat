@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 2.0.1
+Version  : 2.1
 Release  : 4
-URL      : https://weechat.org/files/src/weechat-2.0.1.tar.gz
-Source0  : https://weechat.org/files/src/weechat-2.0.1.tar.gz
-Source99 : https://weechat.org/files/src/weechat-2.0.1.tar.gz.asc
+URL      : https://weechat.org/files/src/weechat-2.1.tar.xz
+Source0  : https://weechat.org/files/src/weechat-2.1.tar.xz
+Source99 : https://weechat.org/files/src/weechat-2.1.tar.xz.asc
 Summary  : Weechat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
@@ -17,15 +17,22 @@ Requires: weechat-bin
 Requires: weechat-lib
 Requires: weechat-data
 Requires: weechat-locales
+BuildRequires : automake
+BuildRequires : automake-dev
 BuildRequires : bison
 BuildRequires : cmake
 BuildRequires : curl-dev
+BuildRequires : gettext-bin
 BuildRequires : libgcrypt-dev
 BuildRequires : libgpg-error-dev
+BuildRequires : libtool
+BuildRequires : libtool-dev
+BuildRequires : m4
 BuildRequires : ncurses-dev
 BuildRequires : nghttp2-dev
 BuildRequires : openssl-dev
 BuildRequires : php-dev
+BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(enchant)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : python
@@ -85,7 +92,7 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-2.0.1
+%setup -q -n weechat-2.1
 %patch1 -p1
 
 %build
@@ -93,7 +100,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1520613137
+export SOURCE_DATE_EPOCH=1522274683
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
@@ -109,7 +116,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1520613137
+export SOURCE_DATE_EPOCH=1522274683
 rm -rf %{buildroot}
 %make_install
 %find_lang weechat
@@ -121,6 +128,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 /usr/bin/weechat
 /usr/bin/weechat-curses
+/usr/bin/weechat-headless
 
 %files data
 %defattr(-,root,root,-)
