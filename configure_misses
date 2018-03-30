@@ -45,8 +45,3 @@ Configure miss: php-config7.0
 Configure miss: php-config70
 Configure miss: php-config7
 Configure miss: PHP compiling and linking
-Configure miss: gnutls/gnutls.h usability
-Configure miss: gnutls/gnutls.h presence
-Configure miss: gnutls/gnutls.h
-Configure miss: gnutls_global_init in -lgnutls
-Configure miss: gnutls headers and libraries

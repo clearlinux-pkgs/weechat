@@ -2,6 +2,7 @@ libc.so.6
 libcurl.so.4
 libdl.so.2
 libgcrypt.so.20
+libgnutls.so.30
 libm.so.6
 libncursesw.so.6
 libperl.so

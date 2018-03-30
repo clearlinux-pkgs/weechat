@@ -6,3 +6,4 @@ php-dev
 ncurses-dev
 openssl-dev
 nghttp2-dev
+gnutls-dev

@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 2.1
-Release  : 4
+Release  : 5
 URL      : https://weechat.org/files/src/weechat-2.1.tar.xz
 Source0  : https://weechat.org/files/src/weechat-2.1.tar.xz
 Source99 : https://weechat.org/files/src/weechat-2.1.tar.xz.asc
@@ -23,6 +23,7 @@ BuildRequires : bison
 BuildRequires : cmake
 BuildRequires : curl-dev
 BuildRequires : gettext-bin
+BuildRequires : gnutls-dev
 BuildRequires : libgcrypt-dev
 BuildRequires : libgpg-error-dev
 BuildRequires : libtool
@@ -100,7 +101,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522274683
+export SOURCE_DATE_EPOCH=1522454244
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
@@ -116,7 +117,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522274683
+export SOURCE_DATE_EPOCH=1522454244
 rm -rf %{buildroot}
 %make_install
 %find_lang weechat
