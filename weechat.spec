@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 2.1
-Release  : 5
+Release  : 6
 URL      : https://weechat.org/files/src/weechat-2.1.tar.xz
 Source0  : https://weechat.org/files/src/weechat-2.1.tar.xz
 Source99 : https://weechat.org/files/src/weechat-2.1.tar.xz.asc
@@ -37,7 +37,6 @@ BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(enchant)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : python
-BuildRequires : python3-dev
 BuildRequires : ruby
 BuildRequires : zlib-dev
 Patch1: pkgconfig-curl.patch
@@ -101,7 +100,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522454244
+export SOURCE_DATE_EPOCH=1523035420
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
@@ -117,7 +116,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522454244
+export SOURCE_DATE_EPOCH=1523035420
 rm -rf %{buildroot}
 %make_install
 %find_lang weechat
