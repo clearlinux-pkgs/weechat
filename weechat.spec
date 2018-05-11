@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 2.1
-Release  : 7
+Release  : 8
 URL      : https://weechat.org/files/src/weechat-2.1.tar.xz
 Source0  : https://weechat.org/files/src/weechat-2.1.tar.xz
 Source99 : https://weechat.org/files/src/weechat-2.1.tar.xz.asc
@@ -100,11 +100,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523035420
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export SOURCE_DATE_EPOCH=1526025184
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 %autogen --disable-static
 make  %{?_smp_mflags}
 
@@ -116,7 +116,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1523035420
+export SOURCE_DATE_EPOCH=1526025184
 rm -rf %{buildroot}
 %make_install
 %find_lang weechat
