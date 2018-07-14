@@ -5,16 +5,17 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 2.1
-Release  : 8
-URL      : https://weechat.org/files/src/weechat-2.1.tar.xz
-Source0  : https://weechat.org/files/src/weechat-2.1.tar.xz
-Source99 : https://weechat.org/files/src/weechat-2.1.tar.xz.asc
+Version  : 2.2
+Release  : 9
+URL      : https://weechat.org/files/src/weechat-2.2.tar.xz
+Source0  : https://weechat.org/files/src/weechat-2.2.tar.xz
+Source99 : https://weechat.org/files/src/weechat-2.2.tar.xz.asc
 Summary  : Weechat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: weechat-bin
 Requires: weechat-lib
+Requires: weechat-license
 Requires: weechat-data
 Requires: weechat-locales
 BuildRequires : automake
@@ -37,6 +38,7 @@ BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(enchant)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : python
+BuildRequires : python-core
 BuildRequires : ruby
 BuildRequires : zlib-dev
 Patch1: pkgconfig-curl.patch
@@ -49,6 +51,7 @@ versions, in order to build Debian packages.
 Summary: bin components for the weechat package.
 Group: Binaries
 Requires: weechat-data
+Requires: weechat-license
 
 %description bin
 bin components for the weechat package.
@@ -78,9 +81,18 @@ dev components for the weechat package.
 Summary: lib components for the weechat package.
 Group: Libraries
 Requires: weechat-data
+Requires: weechat-license
 
 %description lib
 lib components for the weechat package.
+
+
+%package license
+Summary: license components for the weechat package.
+Group: Default
+
+%description license
+license components for the weechat package.
 
 
 %package locales
@@ -92,7 +104,7 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-2.1
+%setup -q -n weechat-2.2
 %patch1 -p1
 
 %build
@@ -100,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526025184
+export SOURCE_DATE_EPOCH=1531581370
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -116,8 +128,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1526025184
+export SOURCE_DATE_EPOCH=1531581370
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/weechat
+cp COPYING %{buildroot}/usr/share/doc/weechat/COPYING
 %make_install
 %find_lang weechat
 
@@ -180,6 +194,10 @@ rm -rf %{buildroot}
 /usr/lib64/weechat/plugins/xfer.so
 /usr/lib64/weechat/plugins/xfer.so.0
 /usr/lib64/weechat/plugins/xfer.so.0.0.0
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/weechat/COPYING
 
 %files locales -f weechat.lang
 %defattr(-,root,root,-)
