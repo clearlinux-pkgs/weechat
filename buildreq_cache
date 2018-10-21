@@ -1,0 +1,10 @@
+2.3
+aspell-dev
+bison
+curl-dev
+php
+pkgconfig(zlib)
+python
+python-core
+ruby
+zlib-dev

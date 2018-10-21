@@ -3,11 +3,6 @@ Configure miss: ncursesw/curses.h presence
 Configure miss: ncursesw/curses.h
 Configure miss: iconv_open in -liconv
 Configure miss: libiconv_open in -liconv
-Configure miss: aspell.h usability
-Configure miss: aspell.h presence
-Configure miss: aspell.h
-Configure miss: new_aspell_speller in -laspell
-Configure miss: aspell headers and libraries
 Configure miss: ruby1.9.3
 Configure miss: ruby1.9.2
 Configure miss: ruby1.9.1
@@ -37,7 +32,9 @@ Configure miss: Lua compiling and linking
 Configure miss: v8.h usability
 Configure miss: v8.h presence
 Configure miss: v8.h
-Configure miss: PHP headers and libraries with php-config... checking for php-config7.2
+Configure miss: PHP headers and libraries with php-config... checking for php-config7.3
+Configure miss: php-config73
+Configure miss: php-config7.2
 Configure miss: php-config72
 Configure miss: php-config7.1
 Configure miss: php-config71

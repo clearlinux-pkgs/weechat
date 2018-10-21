@@ -5,23 +5,24 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 2.2
-Release  : 9
-URL      : https://weechat.org/files/src/weechat-2.2.tar.xz
-Source0  : https://weechat.org/files/src/weechat-2.2.tar.xz
-Source99 : https://weechat.org/files/src/weechat-2.2.tar.xz.asc
+Version  : 2.3
+Release  : 10
+URL      : https://weechat.org/files/src/weechat-2.3.tar.xz
+Source0  : https://weechat.org/files/src/weechat-2.3.tar.xz
+Source99 : https://weechat.org/files/src/weechat-2.3.tar.xz.asc
 Summary  : Weechat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
-Requires: weechat-bin
-Requires: weechat-lib
-Requires: weechat-license
-Requires: weechat-data
-Requires: weechat-locales
+Requires: weechat-bin = %{version}-%{release}
+Requires: weechat-data = %{version}-%{release}
+Requires: weechat-lib = %{version}-%{release}
+Requires: weechat-license = %{version}-%{release}
+Requires: weechat-locales = %{version}-%{release}
+BuildRequires : aspell-dev
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : bison
-BuildRequires : cmake
+BuildRequires : buildreq-cmake
 BuildRequires : curl-dev
 BuildRequires : gettext-bin
 BuildRequires : gnutls-dev
@@ -33,6 +34,7 @@ BuildRequires : m4
 BuildRequires : ncurses-dev
 BuildRequires : nghttp2-dev
 BuildRequires : openssl-dev
+BuildRequires : php
 BuildRequires : php-dev
 BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(enchant)
@@ -50,8 +52,8 @@ versions, in order to build Debian packages.
 %package bin
 Summary: bin components for the weechat package.
 Group: Binaries
-Requires: weechat-data
-Requires: weechat-license
+Requires: weechat-data = %{version}-%{release}
+Requires: weechat-license = %{version}-%{release}
 
 %description bin
 bin components for the weechat package.
@@ -68,10 +70,10 @@ data components for the weechat package.
 %package dev
 Summary: dev components for the weechat package.
 Group: Development
-Requires: weechat-lib
-Requires: weechat-bin
-Requires: weechat-data
-Provides: weechat-devel
+Requires: weechat-lib = %{version}-%{release}
+Requires: weechat-bin = %{version}-%{release}
+Requires: weechat-data = %{version}-%{release}
+Provides: weechat-devel = %{version}-%{release}
 
 %description dev
 dev components for the weechat package.
@@ -80,8 +82,8 @@ dev components for the weechat package.
 %package lib
 Summary: lib components for the weechat package.
 Group: Libraries
-Requires: weechat-data
-Requires: weechat-license
+Requires: weechat-data = %{version}-%{release}
+Requires: weechat-license = %{version}-%{release}
 
 %description lib
 lib components for the weechat package.
@@ -104,7 +106,7 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-2.2
+%setup -q -n weechat-2.3
 %patch1 -p1
 
 %build
@@ -112,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1531581370
+export SOURCE_DATE_EPOCH=1540119371
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -128,10 +130,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1531581370
+export SOURCE_DATE_EPOCH=1540119371
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/weechat
-cp COPYING %{buildroot}/usr/share/doc/weechat/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/weechat
+cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
 %make_install
 %find_lang weechat
 
@@ -158,6 +160,9 @@ cp COPYING %{buildroot}/usr/share/doc/weechat/COPYING
 /usr/lib64/weechat/plugins/alias.so
 /usr/lib64/weechat/plugins/alias.so.0
 /usr/lib64/weechat/plugins/alias.so.0.0.0
+/usr/lib64/weechat/plugins/aspell.so
+/usr/lib64/weechat/plugins/aspell.so.0
+/usr/lib64/weechat/plugins/aspell.so.0.0.0
 /usr/lib64/weechat/plugins/buflist.so
 /usr/lib64/weechat/plugins/buflist.so.0
 /usr/lib64/weechat/plugins/buflist.so.0.0.0
@@ -196,8 +201,8 @@ cp COPYING %{buildroot}/usr/share/doc/weechat/COPYING
 /usr/lib64/weechat/plugins/xfer.so.0.0.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/weechat/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/weechat/COPYING
 
 %files locales -f weechat.lang
 %defattr(-,root,root,-)
