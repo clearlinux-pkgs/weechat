@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 2.3
-Release  : 11
+Release  : 12
 URL      : https://weechat.org/files/src/weechat-2.3.tar.xz
 Source0  : https://weechat.org/files/src/weechat-2.3.tar.xz
 Source99 : https://weechat.org/files/src/weechat-2.3.tar.xz.asc
@@ -114,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540119371
+export SOURCE_DATE_EPOCH=1542434381
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -130,7 +130,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1540119371
+export SOURCE_DATE_EPOCH=1542434381
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
 cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
