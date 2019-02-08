@@ -6,7 +6,5 @@ libgcrypt.so.20
 libgnutls.so.30
 libm.so.6
 libncursesw.so.6
-libperl.so
-libpthread.so.0
 libtinfow.so.6
 libz.so.1

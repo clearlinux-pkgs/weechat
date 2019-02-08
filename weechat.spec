@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 2.3
-Release  : 14
+Release  : 15
 URL      : https://weechat.org/files/src/weechat-2.3.tar.xz
 Source0  : https://weechat.org/files/src/weechat-2.3.tar.xz
 Source99 : https://weechat.org/files/src/weechat-2.3.tar.xz.asc
@@ -123,12 +123,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549594102
+export SOURCE_DATE_EPOCH=1549594957
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-%autogen --disable-static --enable-enchant --enable-python3 --enable-perl
+%autogen --disable-static --enable-enchant --enable-python3 --disable-perl
 make  %{?_smp_mflags}
 
 %check
@@ -139,7 +139,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1549594102
+export SOURCE_DATE_EPOCH=1549594957
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
 cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
@@ -196,9 +196,6 @@ cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
 /usr/lib64/weechat/plugins/lua.so
 /usr/lib64/weechat/plugins/lua.so.0
 /usr/lib64/weechat/plugins/lua.so.0.0.0
-/usr/lib64/weechat/plugins/perl.so
-/usr/lib64/weechat/plugins/perl.so.0
-/usr/lib64/weechat/plugins/perl.so.0.0.0
 /usr/lib64/weechat/plugins/relay.so
 /usr/lib64/weechat/plugins/relay.so.0
 /usr/lib64/weechat/plugins/relay.so.0.0.0
