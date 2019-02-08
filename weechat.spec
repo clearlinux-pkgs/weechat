@@ -6,11 +6,11 @@
 #
 Name     : weechat
 Version  : 2.3
-Release  : 12
+Release  : 14
 URL      : https://weechat.org/files/src/weechat-2.3.tar.xz
 Source0  : https://weechat.org/files/src/weechat-2.3.tar.xz
 Source99 : https://weechat.org/files/src/weechat-2.3.tar.xz.asc
-Summary  : Weechat plugins headers
+Summary  : Fast, light and extensible IRC client (curses UI)
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: weechat-bin = %{version}-%{release}
@@ -30,6 +30,7 @@ BuildRequires : libgcrypt-dev
 BuildRequires : libgpg-error-dev
 BuildRequires : libtool
 BuildRequires : libtool-dev
+BuildRequires : lua-dev
 BuildRequires : m4
 BuildRequires : ncurses-dev
 BuildRequires : nghttp2-dev
@@ -41,13 +42,21 @@ BuildRequires : pkgconfig(enchant)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : python
 BuildRequires : python-core
+BuildRequires : python3-dev
 BuildRequires : ruby
 BuildRequires : zlib-dev
 Patch1: pkgconfig-curl.patch
 
 %description
-This directory contains patches that must be applied for some old Debian/Ubuntu
-versions, in order to build Debian packages.
+= WeeChat
+:author: SÃ©bastien Helleu
+:email: flashcode@flashtux.org
+:lang: en
+image:https://img.shields.io/badge/diaspora*-follow-blue.svg["Diaspora*", link="https://diasp.eu/u/weechat"]
+image:https://img.shields.io/badge/google%2B-follow-blue.svg["Google+", link="https://plus.google.com/+WeeChat"]
+image:https://img.shields.io/badge/devel%20blog-follow-blue.svg["Devel blog", link="https://weechat.org/blog/"]
+image:https://img.shields.io/badge/slant-recommend-28acad.svg["Slant", link="http://www.slant.co/topics/1323/~irc-clients-for-linux"]
+image:https://img.shields.io/badge/help-donate%20%E2%9D%A4-ff69b4.svg["Donate", link="https://weechat.org/donate/"]
 
 %package bin
 Summary: bin components for the weechat package.
@@ -114,12 +123,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542434381
+export SOURCE_DATE_EPOCH=1549594102
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-%autogen --disable-static
+%autogen --disable-static --enable-enchant --enable-python3 --enable-perl
 make  %{?_smp_mflags}
 
 %check
@@ -130,7 +139,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1542434381
+export SOURCE_DATE_EPOCH=1549594102
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
 cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
@@ -184,6 +193,9 @@ cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
 /usr/lib64/weechat/plugins/logger.so
 /usr/lib64/weechat/plugins/logger.so.0
 /usr/lib64/weechat/plugins/logger.so.0.0.0
+/usr/lib64/weechat/plugins/lua.so
+/usr/lib64/weechat/plugins/lua.so.0
+/usr/lib64/weechat/plugins/lua.so.0.0.0
 /usr/lib64/weechat/plugins/perl.so
 /usr/lib64/weechat/plugins/perl.so.0
 /usr/lib64/weechat/plugins/perl.so.0.0.0

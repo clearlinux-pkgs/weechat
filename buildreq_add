@@ -7,3 +7,5 @@ ncurses-dev
 openssl-dev
 nghttp2-dev
 gnutls-dev
+lua-dev
+python3-dev

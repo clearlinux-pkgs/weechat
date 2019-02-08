@@ -8,27 +8,6 @@ Configure miss: ruby1.9.2
 Configure miss: ruby1.9.1
 Configure miss: ruby1.9
 Configure miss: ruby1.8
-Configure miss: lua-config
-Configure miss: lua-config52
-Configure miss: lua-config5.2
-Configure miss: lua-config51
-Configure miss: lua-config5.1
-Configure miss: lua-config50
-Configure miss: lua-config5.0
-Configure miss: lua.h usability
-Configure miss: lua.h presence
-Configure miss: lua.h
-Configure miss: lualib.h usability
-Configure miss: lualib.h presence
-Configure miss: lualib.h
-Configure miss: lua_call in -llua
-Configure miss: lua_call in -llua52
-Configure miss: lua_call in -llua5.2
-Configure miss: lua_call in -llua51
-Configure miss: lua_call in -llua5.1
-Configure miss: lua_call in -llua50
-Configure miss: lua_call in -llua5.0
-Configure miss: Lua compiling and linking
 Configure miss: v8.h usability
 Configure miss: v8.h presence
 Configure miss: v8.h
