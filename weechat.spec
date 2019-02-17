@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 2.4
-Release  : 16
+Release  : 18
 URL      : https://weechat.org/files/src/weechat-2.4.tar.xz
 Source0  : https://weechat.org/files/src/weechat-2.4.tar.xz
 Source99 : https://weechat.org/files/src/weechat-2.4.tar.xz.asc
@@ -18,6 +18,7 @@ Requires: weechat-data = %{version}-%{release}
 Requires: weechat-lib = %{version}-%{release}
 Requires: weechat-license = %{version}-%{release}
 Requires: weechat-locales = %{version}-%{release}
+BuildRequires : aspell-dev
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : bison
@@ -33,14 +34,18 @@ BuildRequires : lua-dev
 BuildRequires : m4
 BuildRequires : ncurses-dev
 BuildRequires : nghttp2-dev
+BuildRequires : nodejs-dev
 BuildRequires : openssl-dev
 BuildRequires : php
 BuildRequires : php-dev
 BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(enchant)
 BuildRequires : pkgconfig(zlib)
+BuildRequires : python
+BuildRequires : python-core
 BuildRequires : python3-dev
 BuildRequires : ruby
+BuildRequires : zlib-dev
 Patch1: pkgconfig-curl.patch
 
 %description
@@ -119,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550422951
+export SOURCE_DATE_EPOCH=1550423483
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -135,7 +140,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1550422951
+export SOURCE_DATE_EPOCH=1550423483
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
 cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
