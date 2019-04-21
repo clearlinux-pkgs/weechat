@@ -4,6 +4,7 @@ libdl.so.2
 libenchant.so.1
 libgcrypt.so.20
 libgnutls.so.30
+liblua.so.5.3
 libm.so.6
 libncursesw.so.6
 libtinfow.so.6
