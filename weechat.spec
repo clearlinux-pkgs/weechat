@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 2.4
-Release  : 20
-URL      : https://weechat.org/files/src/weechat-2.4.tar.xz
-Source0  : https://weechat.org/files/src/weechat-2.4.tar.xz
-Source99 : https://weechat.org/files/src/weechat-2.4.tar.xz.asc
-Summary  : Fast, light and extensible IRC client (curses UI)
+Version  : 2.5
+Release  : 21
+URL      : https://weechat.org/files/src/weechat-2.5.tar.xz
+Source0  : https://weechat.org/files/src/weechat-2.5.tar.xz
+Source99 : https://weechat.org/files/src/weechat-2.5.tar.xz.asc
+Summary  : WeeChat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: weechat-bin = %{version}-%{release}
@@ -18,7 +18,6 @@ Requires: weechat-data = %{version}-%{release}
 Requires: weechat-lib = %{version}-%{release}
 Requires: weechat-license = %{version}-%{release}
 Requires: weechat-locales = %{version}-%{release}
-BuildRequires : aspell-dev
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : bison
@@ -40,24 +39,13 @@ BuildRequires : php
 BuildRequires : php-dev
 BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(enchant)
-BuildRequires : pkgconfig(zlib)
-BuildRequires : python
-BuildRequires : python-core
 BuildRequires : python3-dev
 BuildRequires : ruby
-BuildRequires : zlib-dev
 Patch1: pkgconfig-curl.patch
 
 %description
-= WeeChat
-:author: SÃ©bastien Helleu
-:email: flashcode@flashtux.org
-:lang: en
-image:https://img.shields.io/badge/diaspora*-follow-blue.svg["Diaspora*", link="https://diasp.eu/u/weechat"]
-image:https://img.shields.io/badge/google%2B-follow-blue.svg["Google+", link="https://plus.google.com/+WeeChat"]
-image:https://img.shields.io/badge/devel%20blog-follow-blue.svg["Devel blog", link="https://weechat.org/blog/"]
-image:https://img.shields.io/badge/slant-recommend-28acad.svg["Slant", link="https://www.slant.co/topics/1323/~best-irc-clients-for-linux"]
-image:https://img.shields.io/badge/help-donate%20%E2%9D%A4-ff69b4.svg["Donate", link="https://weechat.org/donate/"]
+This directory contains patches that must be applied for some old Debian/Ubuntu
+versions, in order to build Debian packages.
 
 %package bin
 Summary: bin components for the weechat package.
@@ -117,7 +105,7 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-2.4
+%setup -q -n weechat-2.5
 %patch1 -p1
 
 %build
@@ -125,11 +113,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555856504
-export CFLAGS="$CFLAGS -fcf-protection=full -fstack-protector-strong "
-export FCFLAGS="$CFLAGS -fcf-protection=full -fstack-protector-strong "
-export FFLAGS="$CFLAGS -fcf-protection=full -fstack-protector-strong "
-export CXXFLAGS="$CXXFLAGS -fcf-protection=full -fstack-protector-strong "
+export SOURCE_DATE_EPOCH=1559882905
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 %autogen --disable-static --enable-enchant --enable-python3 --disable-perl
 make  %{?_smp_mflags}
 
@@ -141,7 +130,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1555856504
+export SOURCE_DATE_EPOCH=1559882905
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
 cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
@@ -171,9 +160,6 @@ cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
 /usr/lib64/weechat/plugins/alias.so
 /usr/lib64/weechat/plugins/alias.so.0
 /usr/lib64/weechat/plugins/alias.so.0.0.0
-/usr/lib64/weechat/plugins/aspell.so
-/usr/lib64/weechat/plugins/aspell.so.0
-/usr/lib64/weechat/plugins/aspell.so.0.0.0
 /usr/lib64/weechat/plugins/buflist.so
 /usr/lib64/weechat/plugins/buflist.so.0
 /usr/lib64/weechat/plugins/buflist.so.0.0.0
@@ -204,6 +190,9 @@ cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
 /usr/lib64/weechat/plugins/script.so
 /usr/lib64/weechat/plugins/script.so.0
 /usr/lib64/weechat/plugins/script.so.0.0.0
+/usr/lib64/weechat/plugins/spell.so
+/usr/lib64/weechat/plugins/spell.so.0
+/usr/lib64/weechat/plugins/spell.so.0.0.0
 /usr/lib64/weechat/plugins/trigger.so
 /usr/lib64/weechat/plugins/trigger.so.0
 /usr/lib64/weechat/plugins/trigger.so.0.0.0

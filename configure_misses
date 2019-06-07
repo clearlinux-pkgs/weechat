@@ -8,6 +8,7 @@ Configure miss: ruby1.9.2
 Configure miss: ruby1.9.1
 Configure miss: ruby1.9
 Configure miss: ruby1.8
+Configure miss: v8.h usability
 Configure miss: v8.h presence
 Configure miss: v8.h
 Configure miss: PHP headers and libraries with php-config... checking for php-config7.3
