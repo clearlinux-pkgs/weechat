@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 2.5
-Release  : 21
-URL      : https://weechat.org/files/src/weechat-2.5.tar.xz
-Source0  : https://weechat.org/files/src/weechat-2.5.tar.xz
-Source99 : https://weechat.org/files/src/weechat-2.5.tar.xz.asc
+Version  : 2.6
+Release  : 22
+URL      : https://weechat.org/files/src/weechat-2.6.tar.xz
+Source0  : https://weechat.org/files/src/weechat-2.6.tar.xz
+Source1 : https://weechat.org/files/src/weechat-2.6.tar.xz.asc
 Summary  : WeeChat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
@@ -18,6 +18,7 @@ Requires: weechat-data = %{version}-%{release}
 Requires: weechat-lib = %{version}-%{release}
 Requires: weechat-license = %{version}-%{release}
 Requires: weechat-locales = %{version}-%{release}
+BuildRequires : aspell-dev
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : bison
@@ -39,8 +40,11 @@ BuildRequires : php
 BuildRequires : php-dev
 BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(enchant)
+BuildRequires : pkgconfig(python3)
+BuildRequires : pkgconfig(zlib)
 BuildRequires : python3-dev
 BuildRequires : ruby
+BuildRequires : zlib-dev
 Patch1: pkgconfig-curl.patch
 
 %description
@@ -105,15 +109,15 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-2.5
+%setup -q -n weechat-2.6
 %patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559882905
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570203149
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -123,14 +127,14 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1559882905
+export SOURCE_DATE_EPOCH=1570203149
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
 cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
@@ -184,6 +188,9 @@ cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
 /usr/lib64/weechat/plugins/lua.so
 /usr/lib64/weechat/plugins/lua.so.0
 /usr/lib64/weechat/plugins/lua.so.0.0.0
+/usr/lib64/weechat/plugins/python.so
+/usr/lib64/weechat/plugins/python.so.0
+/usr/lib64/weechat/plugins/python.so.0.0.0
 /usr/lib64/weechat/plugins/relay.so
 /usr/lib64/weechat/plugins/relay.so.0
 /usr/lib64/weechat/plugins/relay.so.0.0.0
