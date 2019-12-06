@@ -6,10 +6,10 @@
 #
 Name     : weechat
 Version  : 2.6
-Release  : 23
+Release  : 24
 URL      : https://weechat.org/files/src/weechat-2.6.tar.xz
 Source0  : https://weechat.org/files/src/weechat-2.6.tar.xz
-Source1 : https://weechat.org/files/src/weechat-2.6.tar.xz.asc
+Source1  : https://weechat.org/files/src/weechat-2.6.tar.xz.asc
 Summary  : WeeChat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
@@ -46,6 +46,7 @@ BuildRequires : python3-dev
 BuildRequires : ruby
 BuildRequires : zlib-dev
 Patch1: pkgconfig-curl.patch
+Patch2: weechat-python38.patch
 
 %description
 This directory contains patches that must be applied for some old Debian/Ubuntu
@@ -110,14 +111,16 @@ locales components for the weechat package.
 
 %prep
 %setup -q -n weechat-2.6
+cd %{_builddir}/weechat-2.6
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570203149
+export SOURCE_DATE_EPOCH=1575648262
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -134,10 +137,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1570203149
+export SOURCE_DATE_EPOCH=1575648262
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
-cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
+cp %{_builddir}/weechat-2.6/COPYING %{buildroot}/usr/share/package-licenses/weechat/0dd432edfab90223f22e49c02e2124f87d6f0a56
 %make_install
 %find_lang weechat
 
@@ -209,7 +212,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/weechat/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/weechat/COPYING
+/usr/share/package-licenses/weechat/0dd432edfab90223f22e49c02e2124f87d6f0a56
 
 %files locales -f weechat.lang
 %defattr(-,root,root,-)
