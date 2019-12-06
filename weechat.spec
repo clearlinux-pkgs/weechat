@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 2.6
-Release  : 22
+Release  : 23
 URL      : https://weechat.org/files/src/weechat-2.6.tar.xz
 Source0  : https://weechat.org/files/src/weechat-2.6.tar.xz
 Source1 : https://weechat.org/files/src/weechat-2.6.tar.xz.asc
