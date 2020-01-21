@@ -1,11 +1,6 @@
-2.6
-aspell-dev
+2.7
 bison
 curl-dev
 nodejs-dev
 php
-pkgconfig(zlib)
-python
-python-core
 ruby
-zlib-dev
