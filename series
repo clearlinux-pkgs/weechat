@@ -1,1 +1,2 @@
 pkgconfig-curl.patch
+CVE-2020-8955.patch
