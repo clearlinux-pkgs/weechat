@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 2.7
-Release  : 26
-URL      : https://weechat.org/files/src/weechat-2.7.tar.xz
-Source0  : https://weechat.org/files/src/weechat-2.7.tar.xz
-Source1  : https://weechat.org/files/src/weechat-2.7.tar.xz.asc
+Version  : 2.7.1
+Release  : 27
+URL      : https://weechat.org/files/src/weechat-2.7.1.tar.xz
+Source0  : https://weechat.org/files/src/weechat-2.7.1.tar.xz
+Source1  : https://weechat.org/files/src/weechat-2.7.1.tar.xz.asc
 Summary  : WeeChat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
@@ -44,7 +44,6 @@ BuildRequires : pkgconfig(python3-embed)
 BuildRequires : python3-dev
 BuildRequires : ruby
 Patch1: pkgconfig-curl.patch
-Patch2: CVE-2020-8955.patch
 
 %description
 This directory contains patches that must be applied for some old Debian/Ubuntu
@@ -108,17 +107,16 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-2.7
-cd %{_builddir}/weechat-2.7
+%setup -q -n weechat-2.7.1
+cd %{_builddir}/weechat-2.7.1
 %patch1 -p1
-%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581705194
+export SOURCE_DATE_EPOCH=1582238987
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -135,10 +133,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1581705194
+export SOURCE_DATE_EPOCH=1582238987
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
-cp %{_builddir}/weechat-2.7/COPYING %{buildroot}/usr/share/package-licenses/weechat/0dd432edfab90223f22e49c02e2124f87d6f0a56
+cp %{_builddir}/weechat-2.7.1/COPYING %{buildroot}/usr/share/package-licenses/weechat/0dd432edfab90223f22e49c02e2124f87d6f0a56
 %make_install
 %find_lang weechat
 
