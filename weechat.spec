@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 2.9
-Release  : 29
-URL      : https://weechat.org/files/src/weechat-2.9.tar.xz
-Source0  : https://weechat.org/files/src/weechat-2.9.tar.xz
-Source1  : https://weechat.org/files/src/weechat-2.9.tar.xz.asc
+Version  : 3.0
+Release  : 30
+URL      : https://weechat.org/files/src/weechat-3.0.tar.xz
+Source0  : https://weechat.org/files/src/weechat-3.0.tar.xz
+Source1  : https://weechat.org/files/src/weechat-3.0.tar.xz.asc
 Summary  : WeeChat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
@@ -106,8 +106,8 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-2.9
-cd %{_builddir}/weechat-2.9
+%setup -q -n weechat-3.0
+cd %{_builddir}/weechat-3.0
 %patch1 -p1
 
 %build
@@ -115,7 +115,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1595263743
+export SOURCE_DATE_EPOCH=1605234942
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -129,13 +129,13 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1595263743
+export SOURCE_DATE_EPOCH=1605234942
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
-cp %{_builddir}/weechat-2.9/COPYING %{buildroot}/usr/share/package-licenses/weechat/0dd432edfab90223f22e49c02e2124f87d6f0a56
+cp %{_builddir}/weechat-3.0/COPYING %{buildroot}/usr/share/package-licenses/weechat/0dd432edfab90223f22e49c02e2124f87d6f0a56
 %make_install
 %find_lang weechat
 
