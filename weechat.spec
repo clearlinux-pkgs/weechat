@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 3.0
-Release  : 30
+Release  : 31
 URL      : https://weechat.org/files/src/weechat-3.0.tar.xz
 Source0  : https://weechat.org/files/src/weechat-3.0.tar.xz
 Source1  : https://weechat.org/files/src/weechat-3.0.tar.xz.asc
