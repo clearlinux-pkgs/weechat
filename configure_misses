@@ -1,5 +1,4 @@
-Configure miss: ncursesw/curses.h usability
-Configure miss: ncursesw/curses.h presence
+Configure miss: g++ option to enable C++11 features
 Configure miss: ncursesw/curses.h
 Configure miss: iconv_open in -liconv
 Configure miss: libiconv_open in -liconv
