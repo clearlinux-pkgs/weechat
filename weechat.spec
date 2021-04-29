@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 3.1
-Release  : 34
+Release  : 35
 URL      : https://weechat.org/files/src/weechat-3.1.tar.xz
 Source0  : https://weechat.org/files/src/weechat-3.1.tar.xz
 Source1  : https://weechat.org/files/src/weechat-3.1.tar.xz.asc
@@ -117,10 +117,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
 export SOURCE_DATE_EPOCH=1615405993
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 %autogen --disable-static --enable-enchant --enable-python3 --disable-perl
 make  %{?_smp_mflags}
 
