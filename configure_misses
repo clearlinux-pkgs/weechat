@@ -1,20 +1,32 @@
+Configure miss: PHP compiling and linking
+Configure miss: PHP headers and libraries with php-config... checking for php-config7.4
 Configure miss: g++ option to enable C++11 features
-Configure miss: ncursesw/curses.h
 Configure miss: iconv_open in -liconv
 Configure miss: libiconv_open in -liconv
-Configure miss: ruby1.9.3
-Configure miss: ruby1.9.2
-Configure miss: ruby1.9.1
-Configure miss: ruby1.9
-Configure miss: PHP headers and libraries with php-config... checking for php-config7.4
-Configure miss: php-config74
-Configure miss: php-config7.3
-Configure miss: php-config73
-Configure miss: php-config7.2
-Configure miss: php-config72
-Configure miss: php-config7.1
-Configure miss: php-config71
-Configure miss: php-config7.0
-Configure miss: php-config70
+Configure miss: ncursesw/curses.h
 Configure miss: php-config7
-Configure miss: PHP compiling and linking
+Configure miss: php-config7.0
+Configure miss: php-config7.1
+Configure miss: php-config7.2
+Configure miss: php-config7.3
+Configure miss: php-config70
+Configure miss: php-config71
+Configure miss: php-config72
+Configure miss: php-config73
+Configure miss: php-config74
+Configure miss: php.h
+Configure miss: php_execute_script in -lphp7
+Configure miss: php_execute_script in -lphp7.0
+Configure miss: php_execute_script in -lphp7.1
+Configure miss: php_execute_script in -lphp7.2
+Configure miss: php_execute_script in -lphp7.3
+Configure miss: php_execute_script in -lphp7.4
+Configure miss: php_execute_script in -lphp70
+Configure miss: php_execute_script in -lphp71
+Configure miss: php_execute_script in -lphp72
+Configure miss: php_execute_script in -lphp73
+Configure miss: php_execute_script in -lphp74
+Configure miss: ruby1.9
+Configure miss: ruby1.9.1
+Configure miss: ruby1.9.2
+Configure miss: ruby1.9.3
