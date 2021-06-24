@@ -1,1 +1,2 @@
---enable-enchant --enable-python3 --disable-perl
+--enable-python3
+--disable-perl
