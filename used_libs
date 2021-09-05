@@ -1,7 +1,6 @@
 libaspell.so.15
 libc.so.6
 libcurl.so.4
-libdl.so.2
 libgcrypt.so.20
 libgnutls.so.30
 liblua.so.5.4
