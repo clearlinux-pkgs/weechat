@@ -6,6 +6,6 @@ libgnutls.so.30
 liblua.so.5.4
 libm.so.6
 libncursesw.so.6
-libpython3.9.so.1.0
+libpython3.10.so.1.0
 libtinfow.so.6
 libz.so.1
