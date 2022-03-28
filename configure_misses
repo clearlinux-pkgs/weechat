@@ -23,3 +23,4 @@ Configure miss: ruby1.9
 Configure miss: ruby1.9.1
 Configure miss: ruby1.9.2
 Configure miss: ruby1.9.3
+Configure miss: x86_64-generic-linux-gnu-file

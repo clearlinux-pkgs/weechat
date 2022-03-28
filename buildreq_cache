@@ -1,6 +1,7 @@
-3.4.1
+3.5
 aspell-dev
 bison
 curl-dev
 php
 ruby
+zstd-dev
