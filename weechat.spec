@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 3.5
-Release  : 43
-URL      : https://weechat.org/files/src/weechat-3.5.tar.xz
-Source0  : https://weechat.org/files/src/weechat-3.5.tar.xz
-Source1  : https://weechat.org/files/src/weechat-3.5.tar.xz.asc
+Version  : 3.6
+Release  : 44
+URL      : https://weechat.org/files/src/weechat-3.6.tar.xz
+Source0  : https://weechat.org/files/src/weechat-3.6.tar.xz
+Source1  : https://weechat.org/files/src/weechat-3.6.tar.xz.asc
 Summary  : WeeChat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
@@ -43,7 +43,6 @@ BuildRequires : pkgconfig(python3)
 BuildRequires : pkgconfig(python3-embed)
 BuildRequires : python3-dev
 BuildRequires : ruby
-BuildRequires : zstd-dev
 Patch1: pkgconfig-curl.patch
 
 %description
@@ -108,8 +107,8 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-3.5
-cd %{_builddir}/weechat-3.5
+%setup -q -n weechat-3.6
+cd %{_builddir}/weechat-3.6
 %patch1 -p1
 
 %build
@@ -117,7 +116,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1648436723
+export SOURCE_DATE_EPOCH=1657483477
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
@@ -135,10 +134,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1648436723
+export SOURCE_DATE_EPOCH=1657483477
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
-cp %{_builddir}/weechat-3.5/COPYING %{buildroot}/usr/share/package-licenses/weechat/31a3d460bb3c7d98845187c716a30db81c44b615
+cp %{_builddir}/weechat-3.6/COPYING %{buildroot}/usr/share/package-licenses/weechat/31a3d460bb3c7d98845187c716a30db81c44b615
 %make_install
 %find_lang weechat
 
