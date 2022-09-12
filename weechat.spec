@@ -6,7 +6,7 @@
 #
 Name     : weechat
 Version  : 3.6
-Release  : 44
+Release  : 45
 URL      : https://weechat.org/files/src/weechat-3.6.tar.xz
 Source0  : https://weechat.org/files/src/weechat-3.6.tar.xz
 Source1  : https://weechat.org/files/src/weechat-3.6.tar.xz.asc
