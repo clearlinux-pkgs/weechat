@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 3.7.1
-Release  : 50
-URL      : https://weechat.org/files/src/weechat-3.7.1.tar.xz
-Source0  : https://weechat.org/files/src/weechat-3.7.1.tar.xz
-Source1  : https://weechat.org/files/src/weechat-3.7.1.tar.xz.asc
+Version  : 3.8
+Release  : 51
+URL      : https://weechat.org/files/src/weechat-3.8.tar.xz
+Source0  : https://weechat.org/files/src/weechat-3.8.tar.xz
+Source1  : https://weechat.org/files/src/weechat-3.8.tar.xz.asc
 Summary  : WeeChat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
@@ -43,6 +43,9 @@ BuildRequires : pkgconfig(python3)
 BuildRequires : pkgconfig(python3-embed)
 BuildRequires : python3-dev
 BuildRequires : ruby
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 Patch1: pkgconfig-curl.patch
 
 %description
@@ -107,8 +110,8 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-3.7.1
-cd %{_builddir}/weechat-3.7.1
+%setup -q -n weechat-3.8
+cd %{_builddir}/weechat-3.8
 %patch1 -p1
 
 %build
@@ -116,12 +119,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1666738561
+export SOURCE_DATE_EPOCH=1673294525
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 %autogen --disable-static --enable-python3 \
 --disable-perl
 make  %{?_smp_mflags}
@@ -134,7 +137,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1666738561
+export SOURCE_DATE_EPOCH=1673294525
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
 cp %{_builddir}/weechat-%{version}/COPYING %{buildroot}/usr/share/package-licenses/weechat/31a3d460bb3c7d98845187c716a30db81c44b615 || :

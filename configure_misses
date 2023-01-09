@@ -17,8 +17,10 @@ Configure miss: php-config74
 Configure miss: php-config8
 Configure miss: php-config8.0
 Configure miss: php-config8.1
+Configure miss: php-config8.2
 Configure miss: php-config80
 Configure miss: php-config81
+Configure miss: php-config82
 Configure miss: ruby1.9
 Configure miss: ruby1.9.1
 Configure miss: ruby1.9.2
