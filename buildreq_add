@@ -9,3 +9,4 @@ nghttp2-dev
 gnutls-dev
 lua-dev
 python3-dev
+aspell-dev
