@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 4.1.1
-Release  : 54
-URL      : https://weechat.org/files/src/weechat-4.1.1.tar.xz
-Source0  : https://weechat.org/files/src/weechat-4.1.1.tar.xz
-Source1  : https://weechat.org/files/src/weechat-4.1.1.tar.xz.asc
+Version  : 4.1.2
+Release  : 55
+URL      : https://weechat.org/files/src/weechat-4.1.2.tar.xz
+Source0  : https://weechat.org/files/src/weechat-4.1.2.tar.xz
+Source1  : https://weechat.org/files/src/weechat-4.1.2.tar.xz.asc
 Summary  : WeeChat plugins headers
 Group    : Development/Tools
 License  : GPL-3.0
@@ -114,15 +114,15 @@ locales components for the weechat package.
 
 
 %prep
-%setup -q -n weechat-4.1.1
-cd %{_builddir}/weechat-4.1.1
+%setup -q -n weechat-4.1.2
+cd %{_builddir}/weechat-4.1.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1700991106
+export SOURCE_DATE_EPOCH=1701725701
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -164,7 +164,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1700991106
+export SOURCE_DATE_EPOCH=1701725701
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
 cp %{_builddir}/weechat-%{version}/COPYING %{buildroot}/usr/share/package-licenses/weechat/31a3d460bb3c7d98845187c716a30db81c44b615 || :
