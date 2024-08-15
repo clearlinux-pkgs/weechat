@@ -2,13 +2,9 @@ ld-linux-x86-64.so.2
 libaspell.so.15
 libc.so.6
 libcjson.so.1
-libcurl.so.4
-libgcc_s.so.1
 libgcrypt.so.20
 libgnutls.so.30
 liblua.so.5.4
-libm.so.6
-libncursesw.so.6
 libperl.so
 libpython3.12.so.1.0
 libz.so.1
