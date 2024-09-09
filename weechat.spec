@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xF82F4B16DEC408F8 (webmaster@weechat.org)
 #
 Name     : weechat
-Version  : 4.4.1
-Release  : 59
-URL      : https://weechat.org/files/src/weechat-4.4.1.tar.gz
-Source0  : https://weechat.org/files/src/weechat-4.4.1.tar.gz
-Source1  : https://weechat.org/files/src/weechat-4.4.1.tar.gz.asc
+Version  : 4.4.2
+Release  : 60
+URL      : https://weechat.org/files/src/weechat-4.4.2.tar.gz
+Source0  : https://weechat.org/files/src/weechat-4.4.2.tar.gz
+Source1  : https://weechat.org/files/src/weechat-4.4.2.tar.gz.asc
 Source2  : F82F4B16DEC408F8.pkey
 Summary  : WeeChat plugins headers
 Group    : Development/Tools
@@ -123,15 +123,15 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) F82F4B16DEC408F8' gpg.status
-%setup -q -n weechat-4.4.1
-cd %{_builddir}/weechat-4.4.1
+%setup -q -n weechat-4.4.2
+cd %{_builddir}/weechat-4.4.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1724104477
+export SOURCE_DATE_EPOCH=1725892224
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -174,7 +174,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1724104477
+export SOURCE_DATE_EPOCH=1725892224
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/weechat
 cp %{_builddir}/weechat-%{version}/COPYING %{buildroot}/usr/share/package-licenses/weechat/31a3d460bb3c7d98845187c716a30db81c44b615 || :
