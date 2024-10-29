@@ -9,7 +9,7 @@
 #
 Name     : weechat
 Version  : 4.4.2
-Release  : 60
+Release  : 61
 URL      : https://weechat.org/files/src/weechat-4.4.2.tar.gz
 Source0  : https://weechat.org/files/src/weechat-4.4.2.tar.gz
 Source1  : https://weechat.org/files/src/weechat-4.4.2.tar.gz.asc
