@@ -6,6 +6,6 @@ libgcrypt.so.20
 libgnutls.so.30
 liblua.so.5.4
 libperl.so
-libpython3.12.so.1.0
+libpython3.13.so.1.0
 libz.so.1
 libzstd.so.1
